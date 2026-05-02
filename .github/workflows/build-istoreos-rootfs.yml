@@ -11,6 +11,10 @@ on:
   # schedule:
    # - cron: 0 16 * * 5
 
+permissions:
+  contents: write
+  actions: read
+
 env:
   REPO_URL: https://github.com/yejunhui3501649-cpu/istoreos
   # REPO_BRANCH: main
@@ -207,6 +211,7 @@ jobs:
         tag_name: generic-rootfs
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*generic-rootfs.tar.gz
+        token: ${{ env.GITHUB_TOKEN }}
 
     - name: 删除运行记录
       uses: Mattraks/delete-workflow-runs@main
